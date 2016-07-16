@@ -1,9 +1,32 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12">
+            filters
+            <div class="checkbox" ng-repeat="department in departments">
+                <label id="{{department}}">
+                    <input type="checkbox" ng-model="filter[department]"/> {{department}}
+                </label>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="employee in employees|filterDepartment:filter">
+                            <td>{{employee.name | fname}}</td>
+                            <td>{{employee.name | lname}}</td>
+                            <td>{{employee.job_titles}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

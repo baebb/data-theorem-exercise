@@ -5,15 +5,18 @@ angular.module('dtExerciseApp', [
   'ui.router'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
-        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
+        // if route is not found
         $urlRouterProvider.otherwise('/');
+
+        // set our apt our app to have pretty URLS
+        //        $locationProvider.html5Mode(true);
         $stateProvider
             .state('index', {
                 url: '/',
                 views: {
                     'navbar': {
-                        templateUrl: 'views/navbar.html',
+                        templateUrl: '/views/navbar.html',
                         controller: 'NavbarCtrl'
                     },
                     'page': {
@@ -22,7 +25,8 @@ angular.module('dtExerciseApp', [
                     }
                 }
             })
-            .state('/employeeinfo', {
+            .state('employeeinfo', {
+                url: '/employeeinfo',
                 views: {
                     'navbar': {
                         templateUrl: 'views/navbar.html',
@@ -34,7 +38,8 @@ angular.module('dtExerciseApp', [
                     }
                 }
             })
-            .state('/newemployee', {
+            .state('newemployee', {
+                url: '/newemployee',
                 views: {
                     'navbar': {
                         templateUrl: 'views/navbar.html',
