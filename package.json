@@ -1,0 +1,16 @@
+{
+    "name": "dtexercise",
+    "version": "0.0.1",
+    "author": "Ross Dyson",
+    "license": "MIT",
+    "dependencies": {
+        "compass": "^0.1.1"
+    },
+    "devDependencies": {
+        "compass-importer": "^0.2.1",
+        "grunt": "^0.4.5",
+        "node-sass": "3.4.2",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-sass": "~1.1.0"
+    }
+}
