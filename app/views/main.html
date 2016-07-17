@@ -4,7 +4,7 @@
             filters
             <div class="checkbox" ng-repeat="department in departments">
                 <label id="{{department}}">
-                    <input type="checkbox" ng-model="filter[department]"/> {{department}}
+                    <input type="checkbox" ng-model="showDepartment[department]"/> {{department}}
                 </label>
             </div>
         </div>
@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="employee in employees|filterDepartment:filter">
+                        <tr ng-repeat="employee in employees|filterDepartment:showDepartment">
                             <td>{{employee.name | fname}}</td>
                             <td>{{employee.name | lname}}</td>
                             <td>{{employee.job_titles}}</td>

@@ -5,6 +5,8 @@ angular.module('dtExerciseApp').filter('filterDepartment', function () {
         var departments = Object.keys(criteria).filter(function (c) {
             return criteria[c];
         });
+        
+//        console.log(departments);
 
         if (departments.length === 0) {
             return employees;
@@ -14,7 +16,7 @@ angular.module('dtExerciseApp').filter('filterDepartment', function () {
             return departments.indexOf(employee.department) >= 0;
         });
 
-        console.log(employees);
+//        console.log(employees);
 
         return employees;
     };

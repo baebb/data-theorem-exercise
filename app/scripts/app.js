@@ -10,13 +10,14 @@ angular.module('dtExerciseApp', [
         $urlRouterProvider.otherwise('/');
 
         // set our apt our app to have pretty URLS
-        //        $locationProvider.html5Mode(true);
+//        $locationProvider.html5Mode(true);
+    
         $stateProvider
-            .state('index', {
+            .state('main', {
                 url: '/',
                 views: {
                     'navbar': {
-                        templateUrl: '/views/navbar.html',
+                        templateUrl: 'views/navbar.html',
                         controller: 'NavbarCtrl'
                     },
                     'page': {
@@ -25,6 +26,7 @@ angular.module('dtExerciseApp', [
                     }
                 }
             })
+        
             .state('employeeinfo', {
                 url: '/employeeinfo',
                 views: {
@@ -38,6 +40,7 @@ angular.module('dtExerciseApp', [
                     }
                 }
             })
+        
             .state('newemployee', {
                 url: '/newemployee',
                 views: {

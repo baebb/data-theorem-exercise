@@ -2,7 +2,7 @@
 
 angular.module('dtExerciseApp')
     .controller('MainCtrl', function ($scope) {
-        $scope.filter = {};
+        $scope.showDepartment = {};
 
         $scope.employees = [
             {
@@ -41,6 +41,9 @@ angular.module('dtExerciseApp')
                 "name": "ABAD JR,  VICENTE M"
     }
 ];
-        $scope.departments = ["WATER MGMT", "POLICE", "GENERAL SERVICES", "CITY COUNCIL", "STREETS & SAN", "OEMC", "AVIATION", "FIRE", "FAMILY & SUPPORT", "IPRA", "PUBLIC LIBRARY", "BUSINESS AFFAIRS", "TRANSPORTN", "HEALTH", "MAYOR'S OFFICE"];
+    
+//    $scope.departments = departmentList;
+    
+        $scope.departments = ["WATER MGMNT", "POLICE", "GENERAL SERVICES", "CITY COUNCIL", "STREETS & SAN", "OEMC", "AVIATION", "FIRE", "FAMILY & SUPPORT", "IPRA", "PUBLIC LIBRARY", "BUSINESS AFFAIRS", "TRANSPORTN", "HEALTH", "MAYOR'S OFFICE"];
 
     });
