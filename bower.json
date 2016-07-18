@@ -1,10 +1,14 @@
 {
-  "name": "dtExercise",
+  "name": "data-theorem-exercise",
   "version": "0.0.1",
   "dependencies": {
     "angular": "~1.0.7",
     "jquery": "~1.9.1",
     "angular-ui-router": "*",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-messages": "^1.5.7"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }

@@ -3,38 +3,47 @@
         <div class="col-md-4 col-xs-12">
             <h3>Add New Employee</h3>
 
-            <form>
-                <div class="form-group">
-                    <label for="first-name">First Name</label>
-                    <input type="text" class="form-control" id="first-name" placeholder="">
+            <form name="employeeForm" novalidate>
+                <div class="form-group" ng-class="{'has-error': employeeForm.fName.$invalid && !employeeForm.fName.$touched && submitted}">
+                    <label class="control-label" for="fName">First Name</label>
+                    <input type="text" class="form-control" name="fName" ng-model="employee.fName" required>
+                    <p ng-show="employeeForm.fName.$invalid && !employeeForm.fName.$touched && submitted" class="help-block">Employee first name is required</p>
+                </div>
+                <div class="form-group" ng-class="{'has-error': employeeForm.lName.$invalid && !employeeForm.lName.$touched && submitted}">
+                    <label class="control-label" for="lName">Last Name</label>
+                    <input type="text" class="form-control" name="lName" ng-model="employee.lName" required>
+                    <p ng-show="employeeForm.lName.$invalid && !employeeForm.lName.$touched && submitted" class="help-block">Employee last name is required</p>
                 </div>
                 <div class="form-group">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" class="form-control" id="last-name" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="Department">Department</label>
-                    <select ng-model="selectDepartment" class="form-control">
-                        <option value="" disabled selected>Select department...</option>
+                    <label class="control-label" for="department">Department</label>
+                    <select ng-model="employee.department" class="form-control" required>
+<!--                        <option value="" disabled>Select department...</option>-->
                         <option ng-repeat="department in departments" value="{{department}}">{{department}}</option>
                     </select>
+                    <p ng-show="employeeForm.department.$invalid && !employeeForm.department.$touched && submitted" class="help-block">Employee department is required</p>
                 </div>
-                <div class="form-group">
-                    <label for="job-title">Job Title</label>
-                    <input type="text" class="form-control" id="job-title" placeholder="">
+                <div class="form-group" ng-class="{'has-error': employeeForm.jobTitle.$invalid && !employeeForm.jobTitle.$touched && submitted}">
+                    <label class="control-label" for="jobTitle">Job Title</label>
+                    <input type="text" class="form-control" name="jobTitle" ng-model="employee.jobTitle" required>
+                    <p ng-show="employeeForm.jobTitle.$invalid && !employeeForm.jobTitle.$touched && submitted" class="help-block">Employee job title is required</p>
                 </div>
-                <div class="form-group">
-                    <label for="salary">Amount (in dollars)</label>
+                <div class="form-group" ng-class="{'has-error': employeeForm.salary.$invalid && !employeeForm.salary.$touched && submitted}">
+                    <label class="control-label" for="salary">Salary</label>
                     <div class="input-group">
                         <div class="input-group-addon">$</div>
-                        <input type="text" class="form-control" id="salary" placeholder="Amount">
+                        <input type="text" class="form-control" name="salary" ng-model="employee.salary" placeholder="Amount (in dollars)" required>
                         <div class="input-group-addon">.00</div>
                     </div>
+                    <p ng-show="employeeForm.salary.$invalid && !employeeForm.salary.$touched && submitted" class="help-block">Employee salary is required</p>
                 </div>
-                <div class="form-group">
-                    <label for="id">Employee ID</label>
-                    <input type="text" class="form-control" id="id" placeholder="">
+                <div class="form-group" ng-class="{'has-error': employeeForm.id.$invalid && !employeeForm.id.$touched && submitted}">
+                    <label class="control-label" for="id">Employee ID</label>
+                    <input type="number" class="form-control" name="id" ng-model="employee.id" required>
+                    <p ng-show="employeeForm.id.$invalid && !employeeForm.id.$touched && submitted" class="help-block">Employee ID is required</p>
                 </div>
+
+                <button type="submit" class="btn btn-default" ng-click="save(employee)">Save</button>
+
             </form>
 
         </div>
