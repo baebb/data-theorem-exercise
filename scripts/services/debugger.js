@@ -1,6 +1,6 @@
 angular.module("ConsoleLogger", [])
 .factory("PrintToConsole", ["$rootScope", function ($rootScope) {
-    var handler = { active: true };
+    var handler = { active: false }; //set to true to turn on
     handler.toggle = function () { handler.active = !handler.active; };
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (handler.active) {

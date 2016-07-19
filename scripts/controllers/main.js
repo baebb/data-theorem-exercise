@@ -2,25 +2,23 @@
 
 angular.module('dtExerciseApp')
     .controller('MainCtrl', function ($scope, PrintToConsole, employeeDataOp) {
-
-        //debugging service
-        $scope.debugger = PrintToConsole;
-
+    
+        //filtered departments hashmap
         $scope.showDepartment = {};
+    
         $scope.employees;
         $scope.currentPage = 0;
-        getEmployees(1);
+        getEmployeeList(1);
 
-        function getEmployees(page) {
-            
-            //clear employees
+        function getEmployeeList(page) {
+            //clear view of old employees
             $scope.employees = [];
 
             //set current page to requested page
             $scope.currentPage = page;
 
             //call employees service for page
-            employeeDataOp.getEmployees(page)
+            employeeDataOp.getEmployeeList(page)
                 .success(function (data) {
                     $scope.employees = data;
                 })
@@ -31,7 +29,7 @@ angular.module('dtExerciseApp')
 
         //change page
         $scope.pageUpdate = function (page) {
-            getEmployees(page);
+            getEmployeeList(page);
         };
 
         //    $scope.departments = departmentList;

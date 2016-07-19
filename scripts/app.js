@@ -29,7 +29,7 @@ angular.module('dtExerciseApp', [
             })
 
         .state('employeeinfo', {
-            url: '/employeeinfo',
+            url: '/employeeinfo/:id',
             views: {
                 'navbar': {
                     templateUrl: 'views/navbar.html',

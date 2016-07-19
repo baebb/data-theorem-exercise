@@ -1,14 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-sm-12">
+            <!-- employee filters -->
             <strong>Filter by Department:</strong>
             <div class="checkbox" ng-repeat="department in departments">
                 <label id="{{department}}">
                     <input type="checkbox" ng-model="showDepartment[department]" /> {{department}}
                 </label>
             </div>
+            <!-- /end employee filters -->
         </div>
+
         <div class="col-md-9 col-sm-12">
+            <!-- employee data table -->
             <div class="table-responsive">
                 <table class="table table-sm">
                     <thead>
@@ -20,19 +24,23 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="employee in employees|filterDepartment:showDepartment">
-                            <td>{{employee.name | fname}}</td>
-                            <td>{{employee.name | lname}}</td>
+                            <td><a href ui-sref="employeeinfo({id:employee.id})">{{employee.name | fname}}</a></td>
+                            <td><a href ui-sref="employeeinfo({id:employee.id})">{{employee.name | lname}}</a></td>
                             <td>{{employee.job_titles}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <!-- /end employee data table -->
+            
+            <!-- change page control -->
             <nav>
                 <ul class="pager">
-                    <li ng-class="{'disabled':currentPage == 1}"><a href ng-click="pageUpdate(currentPage - 1);" >Previous</a></li>
+                    <li ng-class="{'disabled':currentPage == 1}"><a href ng-click="pageUpdate(currentPage - 1);">Previous</a></li>
                     <li><a href ng-click="pageUpdate(currentPage + 1);">Next</a></li>
                 </ul>
             </nav>
+            <!-- /end change page control -->
         </div>
     </div>
 </div>

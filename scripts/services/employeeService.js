@@ -7,10 +7,14 @@ angular.module("employeeService", [])
         //payload
         var employeeDataOp = {};
 
-        //get employees for page
-        employeeDataOp.getEmployees = function (page) {
-            
+        //get employees for list
+        employeeDataOp.getEmployeeList = function (page) {
             return $http.get(urlBase + "?page=" + page);
+        }
+        
+        //get single employee
+        employeeDataOp.getEmployee = function (id) {
+            return $http.get(urlBase + id)
         }
 
         return employeeDataOp;
