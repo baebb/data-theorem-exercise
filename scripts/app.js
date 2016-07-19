@@ -1,13 +1,14 @@
 'use strict';
 
-
 angular.module('dtExerciseApp', [
-    'ui.router'
+    'ui.router',
+    'ConsoleLogger',
+    'employeeService'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
 
         // if route is not found
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/employeelist');
 
         // set our apt our app to have pretty URLS
         //        $locationProvider.html5Mode(true);

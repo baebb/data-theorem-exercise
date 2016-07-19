@@ -1,17 +1,26 @@
 'use strict';
 
+//angular.module('dtExerciseApp', ['employeeService'])
+//    .controller('MainCtrl', function ($scope, employeeDataOp) {
 angular.module('dtExerciseApp')
-    .controller('MainCtrl', function ($scope, $http) {
+    .controller('MainCtrl', function ($scope, PrintToConsole, employeeDataOp) {
+
+        $scope.debugger = PrintToConsole;
+
         $scope.showDepartment = {};
-    
-    $scope.loadEmployees = function() {
-        $http.get("http://localhost:8000/").success(function (data) {
-            $scope.employees = data;
-        }).error(function () {
-            console.log("no data");
-        })
-    }
-    
+        $scope.employees;
+        getEmployees();
+
+        function getEmployees() {
+            employeeDataOp.getEmployees()
+                .success(function (data) {
+                    $scope.employees = data;
+                })
+                .error(function (error) {
+                    console.log('Unable to get employee data:' + error.message)
+                })
+        }
+
 
         $scope.employees2 = [
             {
@@ -50,11 +59,9 @@ angular.module('dtExerciseApp')
                 "name": "ABAD JR,  VICENTE M"
     }
 ];
-    
-//    $scope.departments = departmentList;
-    
+
+        //    $scope.departments = departmentList;
+
         $scope.departments = ["WATER MGMNT", "POLICE", "GENERAL SERVICES", "CITY COUNCIL", "STREETS & SAN", "OEMC", "AVIATION", "FIRE", "FAMILY & SUPPORT", "IPRA", "PUBLIC LIBRARY", "BUSINESS AFFAIRS", "TRANSPORTN", "HEALTH", "MAYOR'S OFFICE"];
-    
-    $scope.loadEmployees();
 
     });
