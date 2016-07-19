@@ -3,11 +3,11 @@
 angular.module('dtExerciseApp')
     .controller('EmployeeinfoCtrl', function ($scope, $stateParams, PrintToConsole, employeeDataOp) {
 
-        $scope.employee;
-        getEmployee(employeeID);
-
         //get employee ID from URL params
         var employeeID = $stateParams.id;
+    
+        $scope.employee;
+        getEmployee(employeeID);
 
         //Get single employee data
         function getEmployee(employeeID) {

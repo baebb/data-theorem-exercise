@@ -3,7 +3,8 @@
 angular.module('dtExerciseApp', [
     'ui.router',
     'ConsoleLogger',
-    'employeeService'
+    'employeeService',
+    'departmentService'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
 

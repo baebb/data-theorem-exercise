@@ -1,14 +1,24 @@
 'use strict';
 
 angular.module('dtExerciseApp')
-    .controller('MainCtrl', function ($scope, PrintToConsole, employeeDataOp) {
-    
+    .controller('MainCtrl', function ($scope, PrintToConsole, employeeDataOp, departmentDataOp) {
+
         //filtered departments hashmap
         $scope.showDepartment = {};
-    
-        $scope.employees;
+        
+        //initiate currentPage
         $scope.currentPage = 0;
+    
+        //get employees for 1st page
         getEmployeeList(1);
+
+        //call department service for departments list
+        $scope.departments = departmentDataOp.getDepartmentList();
+
+        //change page
+        $scope.pageUpdate = function (page) {
+            getEmployeeList(page);
+        };
 
         function getEmployeeList(page) {
             //clear view of old employees
@@ -26,14 +36,5 @@ angular.module('dtExerciseApp')
                     console.log('Unable to get employee data:' + error.message)
                 })
         }
-
-        //change page
-        $scope.pageUpdate = function (page) {
-            getEmployeeList(page);
-        };
-
-        //    $scope.departments = departmentList;
-
-        $scope.departments = ["WATER MGMNT", "POLICE", "GENERAL SERVICES", "CITY COUNCIL", "STREETS & SAN", "OEMC", "AVIATION", "FIRE", "FAMILY & SUPPORT", "IPRA", "PUBLIC LIBRARY", "BUSINESS AFFAIRS", "TRANSPORTN", "HEALTH", "MAYOR'S OFFICE"];
 
     });
