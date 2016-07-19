@@ -1,18 +1,26 @@
 'use strict';
 
-//angular.module('dtExerciseApp', ['employeeService'])
-//    .controller('MainCtrl', function ($scope, employeeDataOp) {
 angular.module('dtExerciseApp')
     .controller('MainCtrl', function ($scope, PrintToConsole, employeeDataOp) {
 
+        //debugging service
         $scope.debugger = PrintToConsole;
 
         $scope.showDepartment = {};
         $scope.employees;
-        getEmployees();
+        $scope.currentPage = 0;
+        getEmployees(1);
 
-        function getEmployees() {
-            employeeDataOp.getEmployees()
+        function getEmployees(page) {
+            
+            //clear employees
+            $scope.employees = [];
+
+            //set current page to requested page
+            $scope.currentPage = page;
+
+            //call employees service for page
+            employeeDataOp.getEmployees(page)
                 .success(function (data) {
                     $scope.employees = data;
                 })
@@ -21,44 +29,10 @@ angular.module('dtExerciseApp')
                 })
         }
 
-
-        $scope.employees2 = [
-            {
-                "department": "WATER MGMNT",
-                "employee_annual_salary": "90744.00",
-                "id": 1,
-                "job_titles": "WATER RATE TAKER",
-                "name": "AARON,  ELVIA J"
-    },
-            {
-                "department": "POLICE",
-                "employee_annual_salary": "84450.00",
-                "id": 2,
-                "job_titles": "POLICE OFFICER",
-                "name": "AARON,  JEFFERY M"
-    },
-            {
-                "department": "POLICE",
-                "employee_annual_salary": "84450.00",
-                "id": 3,
-                "job_titles": "POLICE OFFICER",
-                "name": "AARON,  KARINA"
-    },
-            {
-                "department": "GENERAL SERVICES",
-                "employee_annual_salary": "89880.00",
-                "id": 4,
-                "job_titles": "CHIEF CONTRACT EXPEDITER",
-                "name": "AARON,  KIMBERLEI R"
-    },
-            {
-                "department": "WATER MGMNT",
-                "employee_annual_salary": "106836.00",
-                "id": 5,
-                "job_titles": "CIVIL ENGINEER IV",
-                "name": "ABAD JR,  VICENTE M"
-    }
-];
+        //change page
+        $scope.pageUpdate = function (page) {
+            getEmployees(page);
+        };
 
         //    $scope.departments = departmentList;
 

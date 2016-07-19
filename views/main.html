@@ -4,7 +4,7 @@
             <strong>Filter by Department:</strong>
             <div class="checkbox" ng-repeat="department in departments">
                 <label id="{{department}}">
-                    <input type="checkbox" ng-model="showDepartment[department]"/> {{department}}
+                    <input type="checkbox" ng-model="showDepartment[department]" /> {{department}}
                 </label>
             </div>
         </div>
@@ -27,6 +27,12 @@
                     </tbody>
                 </table>
             </div>
+            <nav>
+                <ul class="pager">
+                    <li ng-class="{'disabled':currentPage == 1}"><a href ng-click="pageUpdate(currentPage - 1);" >Previous</a></li>
+                    <li><a href ng-click="pageUpdate(currentPage + 1);">Next</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
